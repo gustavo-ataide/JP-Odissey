@@ -10,7 +10,7 @@ class SpriteBuffer : public SpriteBase
 	//temporarios
 	friend std::ostream &operator<<(std::ostream &, const SpriteBuffer &);
 public:
-    SpriteBuffer(unsigned , unsigned );
+    SpriteBuffer(unsigned , unsigned  );
 	virtual ~SpriteBuffer(){}
 	
 	void clear();
@@ -21,13 +21,20 @@ public:
 	
 	//RenderBase
 	virtual void init() {};
-	virtual void update() {};
+    virtual void update() {
+        if(looptime == duracao){
+            this->clear();
+        }
+        else{looptime++;}
+    }
     
     
     
     
 	
 private:
+    int duracao;
+    int looptime=0;
 	std::vector<std::string> sprt;
 	
 	//SpriteBase

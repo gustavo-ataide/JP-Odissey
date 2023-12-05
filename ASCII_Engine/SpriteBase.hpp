@@ -7,7 +7,7 @@
 class SpriteBase : public RenderBase
 {
 public:
-	SpriteBase(unsigned largura=0, unsigned altura=0):largura(largura),alturaSprite(altura){}
+	SpriteBase(unsigned largura=0, unsigned altura=0): largura(largura),alturaSprite(altura){}
 	virtual ~SpriteBase(){}
 	
 	unsigned getLargura() const {return this->largura;}
