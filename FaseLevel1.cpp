@@ -5,6 +5,7 @@
 #include "ASCII_Engine/Sprite.hpp"
 #include "ASCII_Engine/SpriteAnimado.hpp"
 
+#include <random>
 #include "Enemy.hpp"
 #include <cstdlib>
 #include <ctime>
@@ -14,66 +15,7 @@
 #include <iostream>
 
 void FaseLevel1::init()
-{	
-    
-	//Objetos de jogo
-//	princesa = new ObjetoDeJogo("Princess",SpriteAnimado("rsc/carro2",2),16,196);
-//	objs.push_back(princesa);
-	
-    
-	//carro[0] = new Enemy(ObjetoDeJogo("Enemy1",Sprite("rsc/carro1"),0,0));
-	//objs.push_back(carro[0]);
-	
-	//carro[1] = new Enemy(ObjetoDeJogo("Enemy2",Sprite("rsc/carro2"),0,0));
-	//objs.push_back(carro[1]);
-	
-	//objs.push_back(new ObjetoDeJogo("Cama",Sprite("rsc/bed.img"),12,168));
-	
-	//chave = new ObjetoDeJogo("Chave",Sprite("rsc/key.img"),12,140);
-//	objs.push_back(chave);
-//
-//	miniChave = new ObjetoDeJogo("MiniChave",TextSprite("O=;"),7,118);
-//	objs.push_back(miniChave);
-//	miniChave->desativarObj();
-//
-//	porta = new Door(ObjetoDeJogo("Door",SpriteAnimado("rsc/door.anm"),31,182));
-//	objs.push_back(porta);
-//
-//	tapetePorta = new ObjetoDeJogo("Tapete",SpriteBuffer(17,1),35,182);
-//	objs.push_back(tapetePorta);
-//	
-//	hero = new Hero(ObjetoDeJogo("Hero",SpriteAnimado("rsc/hero.anm",2),39,108));
-//	objs.push_back(hero);
-//	
-//	portao = new ObjetoDeJogo("frontDoor",Sprite("rsc/frontDoor.img"),49,102);
-//	objs.push_back(portao);
-//													 //std::string(20,'#')
-//	objs.push_back(new ObjetoDeJogo("Life",TextSprite("####################"),7,85));
-//	SpriteBase *tmp = const_cast<SpriteBase*> (objs.back()->getSprite());
-//	life = dynamic_cast<TextSprite*> (tmp);
-//	
-//	//blocos
-//	objs.push_back(new ObjetoDeJogo("B1",Sprite("rsc/castleBlock1.img"),18,38));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B2",Sprite("rsc/castleBlock2.img"),33,38));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B3",Sprite("rsc/castleBlock3.img"),33,132));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B4",Sprite("rsc/castleBlock4.img"),18,45));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B5",Sprite("rsc/castleBlock5.img"),18,120));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B6",Sprite("rsc/castleBlock6.img"),10,158));
-//	colisoes.push_back(objs.back());
-//	
-//	objs.push_back(new ObjetoDeJogo("B7",Sprite("rsc/castleBlock7.img"),31,158));
-//	colisoes.push_back(objs.back());
-//	
+{
 //	objs.push_back(new ObjetoDeJogo("B8",Sprite("rsc/castleBlock8.img"),31,199));
 //	colisoes.push_back(objs.back());
 //	
@@ -81,28 +23,31 @@ void FaseLevel1::init()
 
 unsigned FaseLevel1::run(SpriteBuffer &screen)
 {
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::uniform_int_distribution<> dis(50, 150);
+    std::mt19937 gerA(rd());
+    std::uniform_int_distribution<> disA(12, 17);
     
-    ObjetoDeJogo Bg("Background", Sprite ("rsc/ROAD"), 0, 0);
+    
+    ObjetoDeJogo Bg("Background", Sprite ("rsc/ROAD1"), 0, 0);
     Hero Guga (ObjetoDeJogo("Gustavo", Sprite("rsc/GustavoeMoto"), 13, 0));
-    Enemy carro1 (ObjetoDeJogo("carro1", Sprite("rsc/carro1"), 12, 150));
-    Enemy carro2 (ObjetoDeJogo("carro2", Sprite("rsc/carro2"), 17, 50));
-    Enemy carro3 (ObjetoDeJogo("carro3", Sprite("rsc/carro3"), 23, 110));
+    Enemy carro1 (ObjetoDeJogo("carro1", Sprite("rsc/carro1"), 12, 150),1);
+    Enemy carro2 (ObjetoDeJogo("carro2", Sprite("rsc/carro2"), 17, 50),1);
     
-    Cenario Firmino (ObjetoDeJogo("Firmino", Sprite("rsc/Firmino"), 0, 120 ),20);
-    Cenario plantinha (ObjetoDeJogo("plantinha", Sprite("rsc/carro1"), 30, 120 ), 40);
+    Cenario Placa (ObjetoDeJogo("placa", Sprite("rsc/placa_queimadas"), 23, 120 ),20);
+    Cenario Aluisiocampos (ObjetoDeJogo("aluisiocampos", Sprite("rsc/aluisiocampos"), 3, 120 ), 40);
+    Cenario Montanhas (ObjetoDeJogo("montanhas", Sprite("rsc/montanhas_queimadas"), 2, 110 ), 70);
     
     TextSprite Vida(std::to_string(Guga.getLife()));
-    LifeUP lifeup(ObjetoDeJogo("lifeup", Sprite("rsc/Cogumelo"), 15, 160));
+    LifeUP lifeup(ObjetoDeJogo("lifeup", Sprite("rsc/Cogumelo"), 15, 160),1);
     
-    //padrão
+  
+    
+    
+    system("clear");
     draw(screen);
-    system("clear");
     show(screen);
-    
-    
-    
-    
-    system("clear");
     std::cout << screen << std::endl;
     
     
@@ -125,10 +70,10 @@ unsigned FaseLevel1::run(SpriteBuffer &screen)
         if (str=='d' && Guga.getPosC()+9 < 159){
             Guga.acelera();
         }
-        else if(str == 'a'){
+        else if(str == 'a' && Guga.getPosC()>1){
             Guga.freia();
         }
-        else if (str == 's' && Guga.getPosL()+3 <Bg.getPosL() + 26 && Guga.getPosC()+3 < 159){
+        else if (str == 's' && Guga.getPosL()+3 <Bg.getPosL() + 20 && Guga.getPosC()+3 < 159){
             Guga.moveDown(2);
             Guga.moveRight(2);
         }
@@ -137,33 +82,37 @@ unsigned FaseLevel1::run(SpriteBuffer &screen)
             Guga.moveRight(2);
             
         }
-        
-        if(Guga.colideCom(lifeup)){
-            Guga.aumentagasolina();
-            lifeup.desativarObj();
+        else{
+            Guga.moveRight(2);
         }
+        
+
         
         Bg.update();
         Guga.update();
         carro1.update();
         carro2.update();
-        carro3.update();
-        plantinha.update(Guga);
-        Firmino.update(Guga);
+        Placa.update(Guga);
+        Aluisiocampos.update(Guga);
         lifeup.update(Guga);
+        Montanhas.update(Guga);
         TextSprite Vida(std::to_string(Guga.getLife()));
+        
+        if(Guga.colideCom(lifeup)){
+            Guga.aumentagasolina();
+            lifeup.moveTo(disA(gerA), dis(gen));
+        }
         
         
         Bg.draw(screen, Bg.getPosL(), Bg.getPosC());
         Guga.draw(screen, Guga.getPosL(), Guga.getPosC());
         carro1.draw(screen, carro1.getPosL(), carro1.getPosC());
         carro2.draw(screen, carro2.getPosL(), carro2.getPosC());
-        carro3.draw(screen, carro3.getPosL(), carro3.getPosC());
-        plantinha.draw(screen, plantinha.getPosL(), plantinha.getPosC());
-        Firmino.draw(screen, Firmino.getPosL(), Firmino.getPosC());
-        Vida.draw(screen, Vida.getAltura(), Vida.getLargura());
+        Placa.draw(screen, Placa.getPosL(), Placa.getPosC());
+        Aluisiocampos.draw(screen, Aluisiocampos.getPosL(), Aluisiocampos.getPosC());
+        Vida.draw(screen, Guga.getPosL()-1,Guga.getPosC() );
         lifeup.draw(screen, lifeup.getPosL(),lifeup.getPosC());
-        
+        Montanhas.draw(screen, Montanhas.getPosL(), Montanhas.getPosC());
 
         
         
@@ -174,11 +123,8 @@ unsigned FaseLevel1::run(SpriteBuffer &screen)
         
         
         //se bater fudeu
-        if (Guga.colideCom(carro1) || Guga.colideCom(carro2) || Guga.colideCom(carro3) || (Guga.getLife() <= 0)){
-            system("clear");
-            Sprite GameOver("rsc/GameOver");
-            GameOver.draw(screen, 0, 0);
-            break;
+        if (Guga.colideCom(carro1) || Guga.colideCom(carro2) || (Guga.getLife() <= 0)){
+            return Fase::GAME_OVER;
         }
          
     }

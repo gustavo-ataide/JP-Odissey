@@ -8,11 +8,5 @@ int main()
 {
     system("clear");
     Game::run();
-
-    
-    
-    
-    
-    
 	return 0;
 }

@@ -12,7 +12,7 @@
 class Cenario : public ObjetoDeJogo
 {
 public:
-    Cenario(const ObjetoDeJogo &obj, int time_input=20) : ObjetoDeJogo(obj), apareceu_sn(false), time(time_input){
+    Cenario(const ObjetoDeJogo &obj, int time_input=20) : ObjetoDeJogo(obj), apareceu_sn(false), time(time_input), time_loop(0){
         this->desativarObj();
     }
     
@@ -24,13 +24,13 @@ public:
         if (time == time_loop){
             apareceu_sn = true;
             this->ativarObj();
-            time_loop++;
+//            time_loop++;
         }
         else{time_loop++;}
     }
     
 private:
-    int time;
+    const int time;
     int time_loop;
     bool apareceu_sn;
 

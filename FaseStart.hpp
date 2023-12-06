@@ -6,15 +6,15 @@
 class FaseStart : public Fase
 {
 public:
-	FaseStart(std::string name, const Sprite &bkg) : Fase(name,bkg) {}
-	FaseStart(std::string name, const SpriteAnimado &bkg) : Fase(name,bkg) {}
+	FaseStart(std::string name, const Sprite &bkg, std::string text,const Sprite sprite) : Fase(name,bkg), text(text),sprite(sprite) {}
+	FaseStart(std::string name, const SpriteAnimado &bkg,std::string text, Sprite sprite) : Fase(name,bkg), text(text),sprite(sprite) {}
 	virtual ~FaseStart() {}
 	
 	virtual void init();
 	virtual unsigned run(SpriteBuffer &screen);
 private:
-	ObjetoDeJogo *heroMove1, *heroMove2;
-	
+    Sprite sprite;
+    std::string text;
 	enum {RIDING, PRACING, END};
 
 };
