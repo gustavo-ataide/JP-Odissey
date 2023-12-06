@@ -18,8 +18,8 @@ public:
     
     virtual void update(const Hero &hero){
         if (level == 1){
-            if (this->getPosC()-10 <= 1){
-                this->moveRight(140);
+            if (this->getPosC()-15 <0){
+                this->moveRight(130);
                 switch(linha){
                     case 1: moveTo(12,150);linha++;break;
                     case 2: moveTo(17,150);linha=1;break;
@@ -30,7 +30,7 @@ public:
         
         else if (level == 2){
             if (this->getPosC()-10 <= 1){
-                this->moveRight(140);
+                this->moveRight(130);
                 switch(linha){
                     case 1: moveTo(12,150);linha++;break;
                     case 2: moveTo(17,150);linha++;break;

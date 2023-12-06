@@ -6,7 +6,7 @@
 class Hero : public ObjetoDeJogo
 {
 public:
-	Hero(const ObjetoDeJogo &obj, int gasolina=1000000) : ObjetoDeJogo(obj), gasolina(10000000) {
+	Hero(const ObjetoDeJogo &obj, int gasolina=1000000) : ObjetoDeJogo(obj), gasolina(gasolina) {
         estagiovelocidade=1;
     }
 	virtual ~Hero()	{}
@@ -35,9 +35,9 @@ public:
     }
     
     void aumentagasolina(){
-//        if(gasolina + 20 <=100)
-//            gasolina = gasolina + 20;
-//        else{gasolina = 100;}
+
+            gasolina = gasolina + 50;
+
     }
 
     

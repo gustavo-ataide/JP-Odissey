@@ -31,7 +31,7 @@ unsigned FaseLevel1::run(SpriteBuffer &screen)
     
     
     ObjetoDeJogo Bg("Background", Sprite ("rsc/ROAD1"), 0, 0);
-    Hero Guga (ObjetoDeJogo("Gustavo", Sprite("rsc/GustavoeMoto"), 13, 0));
+    Hero Guga (ObjetoDeJogo("Gustavo", Sprite("rsc/GustavoeMoto"), 13, 0), 350);
     Enemy carro1 (ObjetoDeJogo("carro1", Sprite("rsc/carro1"), 12, 150),1);
     Enemy carro2 (ObjetoDeJogo("carro2", Sprite("rsc/carro2"), 17, 50),1);
     
@@ -45,11 +45,13 @@ unsigned FaseLevel1::run(SpriteBuffer &screen)
   
     
     
-    system("clear");
+    
     draw(screen);
     show(screen);
+    TextSprite("Capture as PLANTAS MISTERIOSAS... Para permanecer vivo.").draw(screen, 0, 0);
+    system("clear");
     std::cout << screen << std::endl;
-    
+    std::cout << "Capture as PLANTAS MISTERIOSAS... Para permanecer vivo."<<std::endl;
     
     
     int looptime=0;
