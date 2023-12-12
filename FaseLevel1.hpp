@@ -2,14 +2,12 @@
 #define FASELEVEL1_HPP
 
 #include "ASCII_Engine/Fase.hpp"
-#include <string>
-#include <list>
-
 #include "Enemy.hpp"
-#include "Door.hpp"
 #include "Hero.hpp"
 #include "Cenario.hpp"
 #include "LifeUP.hpp"
+#include <iostream>
+
 
 class FaseLevel1 : public Fase
 {
@@ -22,21 +20,17 @@ public:
 	virtual void init();
 	virtual unsigned run(SpriteBuffer &screen);
 	
-	bool colideComBloco() const;
 	
 private:
-	Enemy *guardas[2];
-	Hero *hero;
-	Door *porta;
-	ObjetoDeJogo *tapetePorta;
-	ObjetoDeJogo *portao;
-	ObjetoDeJogo *chave;
-	ObjetoDeJogo *miniChave;
-	ObjetoDeJogo *princesa;
+	Enemy *carro[2];
+	Hero *Guga;
+    Cenario *Placa;
+    Cenario *Aluisiocampos;
+	Cenario *Montanhas;
+    TextSprite *Vida;
+    LifeUP *lifeup;
 	
-	TextSprite *life;
-	
-	std::list<ObjetoDeJogo*> colisoes;
+//	std::list<ObjetoDeJogo*> colisoes;
 };
 
 #endif // FASELEVEL1_HPP
